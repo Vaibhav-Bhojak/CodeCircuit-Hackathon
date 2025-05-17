@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periodic Table</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .element {
+            width: 70px;
+            height: 70px;
+            transition: transform 0.2s;
+            margin: 2px;
+            border-radius: 10%;
+            padding: 2px;
+            font-size: 2em;
+        }
+        .element:hover {
+            transform: scale(1.5);
+            transition: 0.5s;
+            z-index: 10;
+        }
+        .alkali-metal { background-color: rgb(36, 76, 87); }
+        .alkaline-earth { background-color: #622e39; }
+        .transition-metal { background-color: #433c65; }
+        .post-transition { background-color: #2f4d47; }
+        .metalloid { background-color: #523e1b; }
+        .nonmetal { background-color: #2a4165; }
+        .noble-gas { background-color: #623842; }
+        .lanthanide { background-color: #004a77; }
+        .actinide { background-color: #613b28; }
+        .period-row {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 4px;
+        }
+        .period-semi-row{
+            display: flex;
+            width: 60%;
+            justify-content: flex-start;
+            margin-bottom: 4px;
+        }
+        .lanthanide-row, .actinide-row {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            padding-left: 120px;
+        }
+        @media only screen and (max-width: 600px) {
+            .hide{
+                display: none;
+            }
+            .head{
+                width: -webkit-fill-available;
+                margin-top: 2em;
+                margin-bottom: 2em;
+            } 
+            .detail{
+                width: -webkit-fill-available;
+                margin-top: 2em;
+                margin-bottom: 4em;
+            }
+            .period-row{
+                margin-bottom: 2em;
+                width: -webkit-fill-available;
+            }
+            .container{
+                width: -webkit-fill-available;
+                height: -webkit-fill-available;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-800">
+    <div class="container mx-auto p-4 w-1/2 md:-w-full lg:w-full">
+        <h1 class="head text-4xl font-bold text-white text-center mb-8">Periodic Table of Elements</h1>
+        <div class="detail flex flex-wrap gap-x-12 gap-y-2 text-sm mt-8 mb-5">
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: rgb(36, 76, 87);"></span>
+              <span class="text-white">Alkali metals</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #622e39;"></span>
+              <span class="text-white">Alkaline earth metals</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #433c65;"></span>
+              <span class="text-white">Transition metals</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #2f4d47;"></span>
+              <span class="text-white">Post-transition metals</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #523e1b;"></span>
+              <span class="text-white">Metalloids</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #613b28;"></span>
+              <span class="text-white">Actinides</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #2a4165;"></span>
+              <span class="text-white">Reactive non-metals</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #623842;"></span>
+              <span class="text-white">Noble gases</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-3 rounded-full inline-block" style="background-color: #004a77;"></span>
+              <span class="text-white">Lanthanides</span>
+            </div>
+          </div>
+        <div class="flex flex-col">
+            <!-- Period 1 -->
+            <div class="period-row w-screen md:w-full lg:w-full">
+                <div class="element alkali-metal p-2 rounded cursor-pointer" id="hydrogen">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white" id="hydro">H</span>
+                        <span class="text-xs text-white" id="hydro2">Hydrogen</span>
+                        <span class="text-xs text-white" class="hydro3">1.008</span>
+                    </div>
+                </div>
+                <div class="w-[1280px]"></div>
+                <div class="element noble-gas p-2 rounded cursor-pointer" id="helium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">He</span>
+                        <span class="text-xs text-white">Helium</span>
+                        <span class="text-xs text-white">4.0026</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex flex-row">
+            <!-- Period 2 -->
+             <div class="flex flex-col w-full">
+            <div class="period-semi-row w-screen md:w-full lg:w-full">
+                <div class="element alkali-metal p-2 rounded cursor-pointer" id="lithium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Li</span>
+                        <span class="text-xs text-white">Lithium</span>
+                        <span class="text-xs text-white">6.94</span>
+                    </div>
+                </div>
+                <div class="element alkaline-earth p-2 rounded cursor-pointer" id="beryllium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Be</span>
+                        <span class="text-xs text-white">Beryllium</span>
+                        <span class="text-xs text-white">9.0122</span>
+                    </div>
+                </div>
+                <div class="w-[800px]"></div>
+                <div class="element metalloid p-2 rounded cursor-pointer" id="boron">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">B</span>
+                        <span class="text-xs text-white">Boron</span>
+                        <span class="text-xs text-white">10.81</span>
+                    </div>
+                </div>
+                <div class="element nonmetal p-2 rounded cursor-pointer" id="carbon">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">C</span>
+                        <span class="text-xs text-white">Carbon</span>
+                        <span class="text-xs text-white">12.011</span>
+                    </div>
+                </div>
+                <div class="element nonmetal p-2 rounded cursor-pointer" id="nitrogen">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">N</span>
+                        <span class="text-xs text-white">Nitrogen</span>
+                        <span class="text-xs text-white">14.007</span>
+                    </div>
+                </div>
+                <div class="element nonmetal p-2 rounded cursor-pointer" id="oxygen">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">O</span>
+                        <span class="text-xs text-white">Oxygen</span>
+                        <span class="text-xs text-white">15.999</span>
+                    </div>
+                </div>
+                <div class="element nonmetal p-2 rounded cursor-pointer" id="fluorine">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">F</span>
+                        <span class="text-xs text-white">Fluorine</span>
+                        <span class="text-xs text-white">18.998</span>
+                    </div>
+                </div>
+                <div class="element noble-gas p-2 rounded cursor-pointer" id="neon">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ne</span>
+                        <span class="text-xs text-white">Neon</span>
+                        <span class="text-xs text-white">20.180</span>
+                    </div>
+                </div>
+            </div>
+                        <!-- Period 3 -->
+                        <div class="period-semi-row w-screen md:w-full lg:w-full">
+                            <div class="element alkali-metal p-2 rounded cursor-pointer" id="sodium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Na</span>
+                                    <span class="text-xs text-white">Sodium</span>
+                                    <span class="text-xs text-white">22.990</span>
+                                </div>
+                            </div>
+                            <div class="element alkaline-earth p-2 rounded cursor-pointer" id="magnesium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Mg</span>
+                                    <span class="text-xs text-white">Magnesium</span>
+                                    <span class="text-xs text-white">24.305</span>
+                                </div>
+                            </div>
+                            <div class="w-[800px]"></div>
+                            <div class="element post-transition p-2 rounded cursor-pointer" id="aluminum">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Al</span>
+                                    <span class="text-xs text-white">Aluminum</span>
+                                    <span class="text-xs text-white">26.982</span>
+                                </div>
+                            </div>
+                            <div class="element metalloid p-2 rounded cursor-pointer" id="silicon">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Si</span>
+                                    <span class="text-xs text-white">Silicon</span>
+                                    <span class="text-xs text-white">28.085</span>
+                                </div>
+                            </div>
+                            <div class="element nonmetal p-2 rounded cursor-pointer" id="phosphorus">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">P</span>
+                                    <span class="text-xs text-white">Phosphorus</span>
+                                    <span class="text-xs text-white">30.974</span>
+                                </div>
+                            </div>
+                            <div class="element nonmetal p-2 rounded cursor-pointer" id="sulfur">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">S</span>
+                                    <span class="text-xs text-white">Sulfur</span>
+                                    <span class="text-xs text-white">32.065</span>
+                                </div>
+                            </div>
+                            <div class="element nonmetal p-2 rounded cursor-pointer" id="chlorine">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Cl</span>
+                                    <span class="text-xs text-white">Chlorine</span>
+                                    <span class="text-xs text-white">35.453</span>
+                                </div>
+                            </div>
+                            <div class="element noble-gas p-2 rounded cursor-pointer" id="argon">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ar</span>
+                                    <span class="text-xs text-white">Argon</span>
+                                    <span class="text-xs text-white">39.948</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- From Uiverse.io by seyed-mohsen-mousavi --> 
+                     <div style="width: 50%; margin-top: -60px;" id="info" class="hide">
+                        <div class="bg-white w-70 p-5 m-5 shadow-md relative rounded-md">
+                            <p class="text-lg font-bold font-sans">Chem</p>
+                            <div class="text-sm py-2 font-mono">
+                            branch of science that examines the compounds made of atoms, molecules, and
+                            the properties and behavior of materials and the effect of materials on each
+                            other....
+                            </div>
+                        </div>
+                    </div>
+  
+                    </div>
+            
+                        <!-- Period 4 -->
+                        <div class="period-row w-screen md:w-full lg:w-full">
+                            <div class="element alkali-metal p-2 rounded cursor-pointer" id="potassium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">K</span>
+                                    <span class="text-xs text-white">Potassium</span>
+                                    <span class="text-xs text-white">39.098</span>
+                                </div>
+                            </div>
+                            <div class="element alkaline-earth p-2 rounded cursor-pointer" id="calcium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ca</span>
+                                    <span class="text-xs text-white">Calcium</span>
+                                    <span class="text-xs text-white">40.078</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="scandium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Sc</span>
+                                    <span class="text-xs text-white">Scandium</span>
+                                    <span class="text-xs text-white">44.956</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="titanium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ti</span>
+                                    <span class="text-xs text-white">Titanium</span>
+                                    <span class="text-xs text-white">47.867</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="vanadium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">V</span>
+                                    <span class="text-xs text-white">Vanadium</span>
+                                    <span class="text-xs text-white">50.942</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="chromium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Cr</span>
+                                    <span class="text-xs text-white">Chromium</span>
+                                    <span class="text-xs text-white">51.996</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="manganese">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Mn</span>
+                                    <span class="text-xs text-white">Manganese</span>
+                                    <span class="text-xs text-white">54.938</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="iron">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Fe</span>
+                                    <span class="text-xs text-white">Iron</span>
+                                    <span class="text-xs text-white">55.845</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="cobalt">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Co</span>
+                                    <span class="text-xs text-white">Cobalt</span>
+                                    <span class="text-xs text-white">58.933</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="nickel">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ni</span>
+                                    <span class="text-xs text-white">Nickel</span>
+                                    <span class="text-xs text-white">58.693</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="copper">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Cu</span>
+                                    <span class="text-xs text-white">Copper</span>
+                                    <span class="text-xs text-white">63.546</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="zinc">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Zn</span>
+                                    <span class="text-xs text-white">Zinc</span>
+                                    <span class="text-xs text-white">65.380</span>
+                                </div>
+                            </div>
+                            <div class="element post-transition p-2 rounded cursor-pointer" id="gallium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ga</span>
+                                    <span class="text-xs text-white">Gallium</span>
+                                    <span class="text-xs text-white">69.723</span>
+                                </div>
+                            </div>
+                            <div class="element metalloid p-2 rounded cursor-pointer" id="germanium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ge</span>
+                                    <span class="text-xs text-white">Germanium</span>
+                                    <span class="text-xs text-white">72.640</span>
+                                </div>
+                            </div>
+                            <div class="element metalloid p-2 rounded cursor-pointer" id="arsenic">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">As</span>
+                                    <span class="text-xs text-white">Arsenic</span>
+                                    <span class="text-xs text-white">74.922</span>
+                                </div>
+                            </div>
+                            <div class="element nonmetal p-2 rounded cursor-pointer" id="selenium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Se</span>
+                                    <span class="text-xs text-white">Selenium</span>
+                                    <span class="text-xs text-white">78.960</span>
+                                </div>
+                            </div>
+                            <div class="element nonmetal p-2 rounded cursor-pointer" id="bromine">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Br</span>
+                                    <span class="text-xs text-white">Bromine</span>
+                                    <span class="text-xs text-white">79.904</span>
+                                </div>
+                            </div>
+                            <div class="element noble-gas p-2 rounded cursor-pointer" id="krypton">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Kr</span>
+                                    <span class="text-xs text-white">Krypton</span>
+                                    <span class="text-xs text-white">83.798</span>
+                                </div>
+                            </div>
+                        </div>
+
+                                    <!-- Period 5 -->
+            <div class="period-row w-screen md:w-full lg:w-full">
+                <div class="element alkali-metal p-2 rounded cursor-pointer" id="rubidium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Rb</span>
+                        <span class="text-xs text-white">Rubidium</span>
+                        <span class="text-xs text-white">85.468</span>
+                    </div>
+                </div>
+                <div class="element alkaline-earth p-2 rounded cursor-pointer" id="strontium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Sr</span>
+                        <span class="text-xs text-white">Strontium</span>
+                        <span class="text-xs text-white">87.62</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="yttrium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Y</span>
+                        <span class="text-xs text-white">Yttrium</span>
+                        <span class="text-xs text-white">88.906</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="zirconium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Zr</span>
+                        <span class="text-xs text-white">Zirconium</span>
+                        <span class="text-xs text-white">91.224</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="niobium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Nb</span>
+                        <span class="text-xs text-white">Niobium</span>
+                        <span class="text-xs text-white">92.906</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="molybdenum">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Mo</span>
+                        <span class="text-xs text-white">Molybdenum</span>
+                        <span class="text-xs text-white">95.96</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="technetium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Tc</span>
+                        <span class="text-xs text-white">Technetium</span>
+                        <span class="text-xs text-white">98</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="ruthenium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ru</span>
+                        <span class="text-xs text-white">Ruthenium</span>
+                        <span class="text-xs text-white">101.07</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="rhodium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Rh</span>
+                        <span class="text-xs text-white">Rhodium</span>
+                        <span class="text-xs text-white">102.91</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="palladium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Pd</span>
+                        <span class="text-xs text-white">Palladium</span>
+                        <span class="text-xs text-white">106.42</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="silver">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ag</span>
+                        <span class="text-xs text-white">Silver</span>
+                        <span class="text-xs text-white">107.87</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="cadmium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Cd</span>
+                        <span class="text-xs text-white">Cadmium</span>
+                        <span class="text-xs text-white">112.41</span>
+                    </div>
+                </div>
+                <div class="element post-transition p-2 rounded cursor-pointer" id="indium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">In</span>
+                        <span class="text-xs text-white">Indium</span>
+                        <span class="text-xs text-white">114.82</span>
+                    </div>
+                </div>
+                <div class="element post-transition p-2 rounded cursor-pointer" id="tin">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Sn</span>
+                        <span class="text-xs text-white">Tin</span>
+                        <span class="text-xs text-white">118.71</span>
+                    </div>
+                </div>
+                <div class="element metalloid p-2 rounded cursor-pointer" id="antimony">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Sb</span>
+                        <span class="text-xs text-white">Antimony</span>
+                        <span class="text-xs text-white">121.76</span>
+                    </div>
+                </div>
+                <div class="element metalloid p-2 rounded cursor-pointer" id="tellurium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Te</span>
+                        <span class="text-xs text-white">Tellurium</span>
+                        <span class="text-xs text-white">127.60</span>
+                    </div>
+                </div>
+                <div class="element nonmetal p-2 rounded cursor-pointer" id="iodine">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">I</span>
+                        <span class="text-xs text-white">Iodine</span>
+                        <span class="text-xs text-white">126.90</span>
+                    </div>
+                </div>
+                <div class="element noble-gas p-2 rounded cursor-pointer" id="xenon">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Xe</span>
+                        <span class="text-xs text-white">Xenon</span>
+                        <span class="text-xs text-white">131.29</span>
+                    </div>
+                </div>
+            </div>
+                        <!-- Period 6 -->
+                        <div class="period-row w-screen md:w-full lg:w-full">
+                            <div class="element alkali-metal p-2 rounded cursor-pointer" id="cesium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Cs</span>
+                                    <span class="text-xs text-white">Cesium</span>
+                                    <span class="text-xs text-white">132.91</span>
+                                </div>
+                            </div>
+                            <div class="element alkaline-earth p-2 rounded cursor-pointer" id="barium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ba</span>
+                                    <span class="text-xs text-white">Barium</span>
+                                    <span class="text-xs text-white">137.33</span>
+                                </div>
+                            </div>
+                            <div class="element lanthanide p-2 rounded cursor-pointer" id="lanthanum">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">La</span>
+                                    <span class="text-xs text-white">Lanthanum</span>
+                                    <span class="text-xs text-white">138.91</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="hafnium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Hf</span>
+                                    <span class="text-xs text-white">Hafnium</span>
+                                    <span class="text-xs text-white">178.49</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="tantalum">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ta</span>
+                                    <span class="text-xs text-white">Tantalum</span>
+                                    <span class="text-xs text-white">180.95</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="tungsten">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">W</span>
+                                    <span class="text-xs text-white">Tungsten</span>
+                                    <span class="text-xs text-white">183.84</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="rhenium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Re</span>
+                                    <span class="text-xs text-white">Rhenium</span>
+                                    <span class="text-xs text-white">186.21</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="osmium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Os</span>
+                                    <span class="text-xs text-white">Osmium</span>
+                                    <span class="text-xs text-white">190.23</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="iridium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Ir</span>
+                                    <span class="text-xs text-white">Iridium</span>
+                                    <span class="text-xs text-white">192.22</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="platinum">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Pt</span>
+                                    <span class="text-xs text-white">Platinum</span>
+                                    <span class="text-xs text-white">195.08</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="gold">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Au</span>
+                                    <span class="text-xs text-white">Gold</span>
+                                    <span class="text-xs text-white">196.97</span>
+                                </div>
+                            </div>
+                            <div class="element transition-metal p-2 rounded cursor-pointer" id="mercury">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Hg</span>
+                                    <span class="text-xs text-white">Mercury</span>
+                                    <span class="text-xs text-white">200.59</span>
+                                </div>
+                            </div>
+                            <div class="element post-transition p-2 rounded cursor-pointer" id="thallium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Tl</span>
+                                    <span class="text-xs text-white">Thallium</span>
+                                    <span class="text-xs text-white">204.38</span>
+                                </div>
+                            </div>
+                            <div class="element post-transition p-2 rounded cursor-pointer" id="lead">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Pb</span>
+                                    <span class="text-xs text-white">Lead</span>
+                                    <span class="text-xs text-white">207.2</span>
+                                </div>
+                            </div>
+                            <div class="element post-transition p-2 rounded cursor-pointer" id="bismuth">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Bi</span>
+                                    <span class="text-xs text-white">Bismuth</span>
+                                    <span class="text-xs text-white">208.98</span>
+                                </div>
+                            </div>
+                            <div class="element metalloid p-2 rounded cursor-pointer" id="polonium">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Po</span>
+                                    <span class="text-xs text-white">Polonium</span>
+                                    <span class="text-xs text-white">209</span>
+                                </div>
+                            </div>
+                            <div class="element metalloid p-2 rounded cursor-pointer" id="astatine">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">At</span>
+                                    <span class="text-xs text-white">Astatine</span>
+                                    <span class="text-xs text-white">210</span>
+                                </div>
+                            </div>
+                            <div class="element noble-gas p-2 rounded cursor-pointer" id="radon">
+                                <div class="flex flex-col items-center justify-center h-full">
+                                    <span class="text-2xl font-bold text-white">Rn</span>
+                                    <span class="text-xs text-white">Radon</span>
+                                    <span class="text-xs text-white">222</span>
+                                </div>
+                            </div>
+                        </div>
+                                    <!-- Period 7 -->
+            <div class="period-row w-screen md:w-full lg:w-full">
+                <div class="element alkali-metal p-2 rounded cursor-pointer" id="francium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Fr</span>
+                        <span class="text-xs text-white">Francium</span>
+                        <span class="text-xs text-white">223</span>
+                    </div>
+                </div>
+                <div class="element alkaline-earth p-2 rounded cursor-pointer" id="radium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ra</span>
+                        <span class="text-xs text-white">Radium</span>
+                        <span class="text-xs text-white">226</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="actinium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ac</span>
+                        <span class="text-xs text-white">Actinium</span>
+                        <span class="text-xs text-white">227</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="rutherfordium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Rf</span>
+                        <span class="text-xs text-white">Rutherfordium</span>
+                        <span class="text-xs text-white">267</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="dubnium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Db</span>
+                        <span class="text-xs text-white">Dubnium</span>
+                        <span class="text-xs text-white">268</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="seaborgium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Sg</span>
+                        <span class="text-xs text-white">Seaborgium</span>
+                        <span class="text-xs text-white">269</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="bohrium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Bh</span>
+                        <span class="text-xs text-white">Bohrium</span>
+                        <span class="text-xs text-white">270</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="hassium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Hs</span>
+                        <span class="text-xs text-white">Hassium</span>
+                        <span class="text-xs text-white">269</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="meitnerium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Mt</span>
+                        <span class="text-xs text-white">Meitnerium</span>
+                        <span class="text-xs text-white">278</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="darmstadtium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ds</span>
+                        <span class="text-xs text-white">Darmstadtium</span>
+                        <span class="text-xs text-white">281</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="roentgenium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Rg</span>
+                        <span class="text-xs text-white">Roentgenium</span>
+                        <span class="text-xs text-white">282</span>
+                    </div>
+                </div>
+                <div class="element transition-metal p-2 rounded cursor-pointer" id="copernicium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Cn</span>
+                        <span class="text-xs text-white">Copernicium</span>
+                        <span class="text-xs text-white">285</span>
+                    </div>
+                </div>
+                <div class="element post-transition p-2 rounded cursor-pointer" id="nihonium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Nh</span>
+                        <span class="text-xs text-white">Nihonium</span>
+                        <span class="text-xs text-white">286</span>
+                    </div>
+                </div>
+                <div class="element post-transition p-2 rounded cursor-pointer" id="flerovium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Fl</span>
+                        <span class="text-xs text-white">Flerovium</span>
+                        <span class="text-xs text-white">289</span>
+                    </div>
+                </div>
+                <div class="element post-transition p-2 rounded cursor-pointer" id="moscovium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Mc</span>
+                        <span class="text-xs text-white">Moscovium</span>
+                        <span class="text-xs text-white">290</span>
+                    </div>
+                </div>
+                <div class="element post-transition p-2 rounded cursor-pointer" id="livermorium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Lv</span>
+                        <span class="text-xs text-white">Livermorium</span>
+                        <span class="text-xs text-white">293</span>
+                    </div>
+                </div>
+                <div class="element metalloid p-2 rounded cursor-pointer" id="tennessine">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ts</span>
+                        <span class="text-xs text-white">Tennessine</span>
+                        <span class="text-xs text-white">294</span>
+                    </div>
+                </div>
+                <div class="element noble-gas p-2 rounded cursor-pointer" id="oganesson">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Og</span>
+                        <span class="text-xs text-white">Oganesson</span>
+                        <span class="text-xs text-white">294</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lanthanide Series -->
+            <div class="lanthanide-row">
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="cerium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ce</span>
+                        <span class="text-xs text-white">Cerium</span>
+                        <span class="text-xs text-white">140.12</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="praseodymium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Pr</span>
+                        <span class="text-xs text-white">Praseodymium</span>
+                        <span class="text-xs text-white">140.91</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="neodymium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Nd</span>
+                        <span class="text-xs text-white">Neodymium</span>
+                        <span class="text-xs text-white">144.24</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="promethium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Pm</span>
+                        <span class="text-xs text-white">Promethium</span>
+                        <span class="text-xs text-white">145</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="samarium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Sm</span>
+                        <span class="text-xs text-white">Samarium</span>
+                        <span class="text-xs text-white">150.36</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="europium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Eu</span>
+                        <span class="text-xs text-white">Europium</span>
+                        <span class="text-xs text-white">151.96</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="gadolinium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Gd</span>
+                        <span class="text-xs text-white">Gadolinium</span>
+                        <span class="text-xs text-white">157.25</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="terbium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Tb</span>
+                        <span class="text-xs text-white">Terbium</span>
+                        <span class="text-xs text-white">158.93</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="dysprosium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Dy</span>
+                        <span class="text-xs text-white">Dysprosium</span>
+                        <span class="text-xs text-white">162.50</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="holmium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Ho</span>
+                        <span class="text-xs text-white">Holmium</span>
+                        <span class="text-xs text-white">164.93</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="erbium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Er</span>
+                        <span class="text-xs text-white">Erbium</span>
+                        <span class="text-xs text-white">167.26</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="thulium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Tm</span>
+                        <span class="text-xs text-white">Thulium</span>
+                        <span class="text-xs text-white">168.93</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="ytterbium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Yb</span>
+                        <span class="text-xs text-white">Ytterbium</span>
+                        <span class="text-xs text-white">173.05</span>
+                    </div>
+                </div>
+                <div class="element lanthanide p-2 rounded cursor-pointer" id="lutetium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Lu</span>
+                        <span class="text-xs text-white">Lutetium</span>
+                        <span class="text-xs text-white">174.97</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actinide Series -->
+            <div class="actinide-row">
+                <div class="element actinide p-2 rounded cursor-pointer" id="thorium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Th</span>
+                        <span class="text-xs text-white">Thorium</span>
+                        <span class="text-xs text-white">232.04</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="protactinium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Pa</span>
+                        <span class="text-xs text-white">Protactinium</span>
+                        <span class="text-xs text-white">231.04</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="uranium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">U</span>
+                        <span class="text-xs text-white">Uranium</span>
+                        <span class="text-xs text-white">238.03</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="neptunium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Np</span>
+                        <span class="text-xs text-white">Neptunium</span>
+                        <span class="text-xs text-white">237</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="plutonium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Pu</span>
+                        <span class="text-xs text-white">Plutonium</span>
+                        <span class="text-xs text-white">244</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="americium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Am</span>
+                        <span class="text-xs text-white">Americium</span>
+                        <span class="text-xs text-white">243</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="curium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Cm</span>
+                        <span class="text-xs text-white">Curium</span>
+                        <span class="text-xs text-white">247</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="berkelium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Bk</span>
+                        <span class="text-xs text-white">Berkelium</span>
+                        <span class="text-xs text-white">247</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="californium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Cf</span>
+                        <span class="text-xs text-white">Californium</span>
+                        <span class="text-xs text-white">251</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="einsteinium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Es</span>
+                        <span class="text-xs text-white">Einsteinium</span>
+                        <span class="text-xs text-white">252</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="fermium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Fm</span>
+                        <span class="text-xs text-white">Fermium</span>
+                        <span class="text-xs text-white">257</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="mendelevium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Md</span>
+                        <span class="text-xs text-white">Mendelevium</span>
+                        <span class="text-xs text-white">258</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="nobelium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">No</span>
+                        <span class="text-xs text-white">Nobelium</span>
+                        <span class="text-xs text-white">259</span>
+                    </div>
+                </div>
+                <div class="element actinide p-2 rounded cursor-pointer" id="lawrencium">
+                    <div class="flex flex-col items-center justify-center h-full">
+                        <span class="text-2xl font-bold text-white">Lr</span>
+                        <span class="text-xs text-white">Lawrencium</span>
+                        <span class="text-xs text-white">262</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="scripts/periodic.js"></script>
+
+</body>
+</html>
