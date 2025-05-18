@@ -976,3 +976,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all legend items
+    const legendItems = document.querySelectorAll('.detail .flex.items-center');
+    
+    // Add hover event listeners to each legend item
+    legendItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // Get the color from the span element
+            const colorSpan = this.querySelector('span:first-child');
+            const backgroundColor = window.getComputedStyle(colorSpan).backgroundColor;
+            
+            // Get all elements
+            const allElements = document.querySelectorAll('.element');
+            
+            // Dim all elements first
+            allElements.forEach(element => {
+                element.style.opacity = '0.3';
+                element.style.transition = 'opacity 0.3s ease';
+            });
+            
+            // Highlight elements with matching background color
+            allElements.forEach(element => {
+                const elementBgColor = window.getComputedStyle(element).backgroundColor;
+                if (elementBgColor === backgroundColor) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'scale(1.1)';
+                    element.style.transition = 'all 0.3s ease';
+                }
+            });
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            // Reset all elements
+            const allElements = document.querySelectorAll('.element');
+            allElements.forEach(element => {
+                element.style.opacity = '1';
+                element.style.transform = 'scale(1)';
+                element.style.transition = 'all 0.3s ease';
+            });
+        });
+    });
+});
